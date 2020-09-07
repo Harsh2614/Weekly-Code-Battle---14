@@ -1,0 +1,69 @@
+I had used PIL(Python Imaging Library), now known as Pillow 
+for this challenge. It is a free & open source library available in 
+python that is used for image related operations like opening,
+manipulating pixels, draw text(watermarks), etc. It is done by 
+taking width, height, margin of x & y coordinates in the image. 
+PIL supports many different image file formats like jpeg, png,
+etc. It is available for Windows, Linux & Mac OS. And most 
+importantly, it supports python 3. The latest version right now 
+available is PIL 1.1.7.
+
+Steps Involved:-
+
+1. Firstly we need to install pillow(PIL) if it is not in our by 
+    default. For this, I used command as:-
+
+    pip install pillow
+
+2. Then we input image which we want to add the watermark.
+     For this, I used Image.open('image path') & store it in some
+     variable named input. 
+ 
+     Note - Image is a pre-defined library in python in which we 
+                 perform all our operations.
+
+3. Next i set the width & height of image by assigning input.size
+    to width & height vars as:-
+
+    width, height = input.size
+
+4. Then i draw the watermark(text) which we want to apply on
+     image. For this, I used ImageDraw.Draw(input) & assign it
+     to some var mark & then take the input of required text as 
+     "Money Heist" as:-
+
+     mark = ImageDraw.Draw(input)
+     text = "Money Heist"
+
+     Note - ImageDraw is a pre-defined library(module) in python 
+                 & i use Draw method of this module.
+
+5. Next i take the font of inputted text as default using 
+    ImageFont.load_default() & then assign 
+    draw.textsize(text, font) to some vars textwidth, textheight as:-
+
+    font = ImageFont.load_default()
+    textwidth, textheight = draw.textsize(text, font)
+
+    Note - ImageFont is a pre-defined library(module) in python 
+                 & i use load_default method of this module.
+
+6. Now i set the margin of inputted as 10 & then set the x & y
+    coordinates of text as:-
+
+    x = width - textwidth - margin
+    y = height - textheight - margin
+
+7. At last, I apply the watermark in the bottom right corner of
+    the image as present in 3rd gen smartphones as:-
+
+    draw.text((x,y),text,font=font)
+
+8. Now, i use the image show command to show the image as:-
+
+     input.show()
+
+9. Finally, I save the output i.e. watermarked image within the
+    same directory as the inputted image as:-
+
+    input.save('image path')
